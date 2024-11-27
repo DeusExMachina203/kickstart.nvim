@@ -77,7 +77,7 @@ git clone https://github.com/DeusExMachina203/kickstart.nvim.git "${XDG_CONFIG_H
 If you're using `cmd.exe`:
 
 ```
-git clone https://github.com/nvim-lua/kickstart.nvim.git %userprofile%\AppData\Local\nvim\
+git clone https://github.com/DeusExMachina203/kickstart.nvim.git %userprofile%\AppData\Local\nvim\
 ```
 
 If you're using `powershell.exe`
