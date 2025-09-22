@@ -194,6 +194,8 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 --Own commands
 vim.keymap.set('n', '<leader>n', ':set norelativenumber<CR>', { desc = 'Turn off relative [n]umbers' })
 vim.keymap.set('n', '<leader>N', ':set relativenumber<CR>', { desc = 'Turn on relative [N]umbers' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show [e]rror' })
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'Rename Symbol' })
 
 vim.keymap.set('n', 'd', '"_d', { noremap = true })
 vim.keymap.set('v', 'd', '"_d', { noremap = true })
@@ -331,6 +333,12 @@ require('lazy').setup({
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
     },
+  },
+
+  {
+    'pmizio/typescript-tools.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {},
   },
 
   -- NOTE: Plugins can specify dependencies.
@@ -635,10 +643,13 @@ require('lazy').setup({
         -- But for many setups, the LSP (`tsserver`) will work just fine
         jdtls = {},
         ts_ls = {},
+        astro = {},
+        markdown_oxide = {},
+        csharp_ls = {},
         --
 
         lua_ls = {
-          -- cmd = {...},
+          --cmd = { ... },
           -- filetypes = { ...},
           -- capabilities = {},
           settings = {
@@ -666,6 +677,7 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'astro',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
